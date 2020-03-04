@@ -43,11 +43,11 @@ controller.getUsers = (req, res) => {
 };
 
 controller.insertUser = (req, res) => {
-    const {name, email, password, age} = req.body;
-    if(!password || !name || !email) {
+    const {name, email, password, age, family} = req.body;
+    if(!password || !name || !email || !family) {
         res.send({
             status: false,
-            message: "Name and Email and Passwotd are required.",
+            message: "Name and Email and Password are required.",
             data: {}
         });
     }
