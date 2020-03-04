@@ -8,6 +8,10 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    family: {
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         required: true,
@@ -22,7 +26,13 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         minlength: 6
-    }
+    },
+    books: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Book'
+        }
+    ]
 }, {
     timestamps: true
 });
@@ -41,15 +51,12 @@ UserSchema.methods.comparePassword = function(password, cb) {
 
 UserSchema.pre('save', function(next) {
     const user = this;
-    bcrypt.genSalt(10, function(error, salt) {
-        if(error) {
-            next(error);
-        }
-        bcrypt.hash(user.password, salt, function(error, encrypted) {
-            user.password = encrypted;
-            next();
-        });
+    
+    bcrypt.hash(user.password, bcrypt.genSaltSync(10), function(error, encrypted) {
+        user.password = encrypted;
+        next();
     });
+    
 });
 
 module.exports = mongoose.model('User', UserSchema);
