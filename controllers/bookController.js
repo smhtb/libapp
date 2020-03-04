@@ -20,14 +20,12 @@ controller.insertBook = async (req, res) => {
         req.body.user = req.userid;
         const newBook = await new Book(req.body).save();
         if(newBook) {
-            const userById = await User.findById(req.userid);
-            userById.books.push(newBook);
-            await userById.save();
+            const updatedUser = await User.findByIdAndUpdate(req.userid, {$push: {books: newBook}});            
             res.status(200);
             res.send({
                 status: true,
                 message: "Book successfully added.",
-                data: {newBook, userById}
+                data: {newBook}
             });
         }
         else {
