@@ -27,6 +27,9 @@ const UserSchema = new Schema({
         required: true,
         minlength: 6
     },
+    token: {
+        type: String
+    },
     books: [
         {
             type: mongoose.Schema.Types.ObjectId,
