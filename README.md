@@ -13,7 +13,7 @@ mongodb
 npm install<br>
 npm start
 
-# API
+# USER API
 <strong>Register new user</strong><br>
 Method: Post <br>
 Address: http://localhost:3000/api/v1/auth/register <br>
@@ -27,3 +27,22 @@ Body Params: <br>
     <li>avatar (optional. Only files with the extension png, jpg, gif and jpeg are acceptable)</li>
 </ul>
 <hr>
+<strong>Login</strong><br>
+Method: Post <br>
+Address: http://localhost:3000/api/v1/auth/login <br>
+Body Params: <br>
+<ul>
+    <li>email (required)</li>
+    <li>password (required)</li>
+</ul>
+Response: A token that you will need for other requests. <br>
+<hr>
+<strong>Logout</strong><br>
+Method: Get <br>
+Address: http://localhost:3000/api/v1/auth/logout <br>
+Header Params: <br>
+<ul>
+    <li>jwttoken (required. After login you have earned it)</li>    
+</ul>
+
+# BOOK API
