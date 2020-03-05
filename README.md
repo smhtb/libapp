@@ -117,6 +117,7 @@ Header Params: <br>
     <li>jwttoken (required. After login you have earned it)</li>    
 </ul>
 <hr>
+
 # Customer API
 <strong>Buy one book</strong><br>
 Method: Post <br>
