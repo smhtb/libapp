@@ -37,6 +37,14 @@ controller.buy = async (req, res) => {
                     });
                 }
             }
+            else {
+                res.status(400);
+                return res.send({
+                    status: false,
+                    message: "This book does not exist.",
+                    data: {}
+                });
+            }
         }
         catch(error) {
             res.status(400);
