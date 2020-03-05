@@ -30,6 +30,9 @@ const UserSchema = new Schema({
     token: {
         type: String
     },
+    avatar: {
+        type: String
+    },
     books: [
         {
             type: mongoose.Schema.Types.ObjectId,
