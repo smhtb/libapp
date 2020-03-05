@@ -95,7 +95,15 @@ controller.getBook = async (req, res) => {
                 message: 'Your book was found.',
                 data: book
             });
-        }       
+        }
+        else {
+            res.status(404);
+            res.send({
+                status: false,
+                message: 'Book not found',
+                data: {}
+            });
+        }      
     }
     catch(error) {
         res.status(404);
@@ -142,6 +150,14 @@ controller.deleteBook = async (req, res) => {
                 status: true,
                 message: 'Your book has been deleted.',
                 data: deletedBook
+            });
+        }
+        else {
+            res.status(404);
+            res.send({
+                status: false,
+                message: 'Book not found',
+                data: {}
             });
         }
     }
